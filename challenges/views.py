@@ -13,6 +13,9 @@ def february(request):
 def march(request):
     return HttpResponse("Learn Django for at least 30 miniutes per day")
 
+def get_month_by_number(request, month):
+    return HttpResponse(month)
+
 def get_month(request, month):
     if month == "january":
         msg = "Eat no meat for the entire month!" 
