@@ -46,7 +46,7 @@ def get_month(request, month):
         msg = challenges[month]
         return render(request, "challenges/challenge.html", {
             "text": msg,
-            "month_name": month.capitalize()
+            "month_name": month
 
         })
     except:
