@@ -3,18 +3,18 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
 challenges = {
-    "january": "january".capitalize() + ": Eat no meat for the entire month!" ,
-    "february": "february".capitalize() + ": Walk for at least 20 minutes every day!",
-    "march": "march".capitalize() + ": Learn Django for at least 20 minutes every day!",
-    "april": "april".capitalize() + ": Eat no meat for the entire month!" ,
-    "may": "may".capitalize() + ": Walk for at least 20 minutes every day!",
-    "june": "june".capitalize() + ": Learn Django for at least 20 minutes every day!",
-    "july": "july".capitalize() + ": Eat no meat for the entire month!" ,
-    "august": "august".capitalize() + ": Walk for at least 20 minutes every day!",
-    "september": "september".capitalize() + ": Learn Django for at least 20 minutes every day!",
-    "october": "october".capitalize() + ": Eat no meat for the entire month!" ,
-    "november": "november".capitalize() + ": Walk for at least 20 minutes every day!",
-    "december": "december".capitalize() + ": Learn Django for at least 20 minutes every day!",
+    "january": "Eat no meat for the entire month!" ,
+    "february": "Walk for at least 20 minutes every day!",
+    "march": "Learn Django for at least 20 minutes every day!",
+    "april": "Eat no meat for the entire month!" ,
+    "may": "Walk for at least 20 minutes every day!",
+    "june": "Learn Django for at least 20 minutes every day!",
+    "july": "Eat no meat for the entire month!" ,
+    "august": "Walk for at least 20 minutes every day!",
+    "september": "Learn Django for at least 20 minutes every day!",
+    "october": "Eat no meat for the entire month!" ,
+    "november": "Walk for at least 20 minutes every day!",
+    "december": "Learn Django for at least 20 minutes every day!",
 }
 
 # Create your views here.
@@ -44,7 +44,11 @@ def get_month_by_number(request, month):
 def get_month(request, month):
     try:
         msg = challenges[month]
-        return render(request, "challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {
+            "text": msg,
+            "month_name": month.capitalize()
+
+        })
     except:
         return HttpResponse("<h1>This month is not supported!</h1>")
         
